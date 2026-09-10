@@ -237,7 +237,7 @@
 </head>
 <body>
     <div id="networkStatus" class="offline-indicator">
-        📶 You're offline - changes will sync when online
+        📶 You're offline - attendance cannot be recorded
     </div>
 
     <div class="container">
@@ -535,41 +535,6 @@ async function loadEmployees() {
 
 loadEmployees();
         
-        // Offline Storage
-        function saveOfflineData(data) {
-            const offlineData = JSON.parse(localStorage.getItem('offlineCheckins') || '[]');
-            offlineData.push({
-                ...data,
-                timestamp: new Date().toISOString(),
-                offline: true
-            });
-            localStorage.setItem('offlineCheckins', JSON.stringify(offlineData));
-        }
-        
-        function syncOfflineData() {
-            const offlineData = JSON.parse(localStorage.getItem('offlineCheckins') || '[]');
-            if (offlineData.length === 0) return;
-            
-            offlineData.forEach(async (data, index) => {
-                try {
-                    await fetch(WEBHOOK_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-                    
-                    // Remove synced item
-                    const updatedData = JSON.parse(localStorage.getItem('offlineCheckins') || '[]');
-                    updatedData.splice(index, 1);
-                    localStorage.setItem('offlineCheckins', JSON.stringify(updatedData));
-                } catch (error) {
-                    console.log('Sync failed for item:', data);
-                }
-            });
-        }
-        
-        // Sync when back online
-        
         function getCurrentLocation() {
             console.log('Requesting location...');
             if (navigator.geolocation) {
@@ -784,13 +749,13 @@ resultMessage.innerHTML = `
     ❌ ${result.message || 'Attendance failed'}
 `;
                 }
-            } catch (error) {
-                // Save offline if network error
-                saveOfflineData(data);
-                resultMessage.className = 'result-message result-success';
-                resultMessage.innerHTML = '💾 Network error - saved offline, will sync later';
-                form.reset();
-            } finally {
+          } catch (error) {
+    console.error('Attendance submission failed:', error);
+
+    resultMessage.className = 'result-message result-error';
+    resultMessage.innerHTML =
+        '❌ Network error. Attendance was NOT recorded. Please reconnect and try again.';
+}finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Submit Check-in/out';
             }
@@ -803,10 +768,7 @@ resultMessage.innerHTML = `
             }
         }, 300000);
         
-        // Try to sync offline data on page load
-        if (navigator.onLine) {
-            syncOfflineData();
-        }
+
     </script>
 </body>
 </html>
