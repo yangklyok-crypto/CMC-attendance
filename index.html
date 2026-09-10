@@ -786,7 +786,10 @@ loadEmployees();
         return;
     }
 
-    if (!locationObtained) {
+  if (!locationObtained) {
+    alert('Location is required before check-in/out.');
+    return;
+}
             
             const formData = new FormData(form);
             const rawData = Object.fromEntries(formData);
