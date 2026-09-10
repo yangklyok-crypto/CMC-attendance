@@ -1,4 +1,4 @@
-const CACHE_NAME = 'employee-checkin-v2';
+const CACHE_NAME = 'employee-checkin-v3';
 const urlsToCache = [
   './',
   './index.html',
