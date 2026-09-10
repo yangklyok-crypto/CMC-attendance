@@ -536,8 +536,8 @@
                 });
                 
                 console.log('Response status:', response.status);
-                
-                if (response.ok) {
+                const result = await response.json();
+                if (response.ok && result.success) {
                     // Success - assume it worked if we got a 200 response
                    resultMessage.className = 'result-message result-success';
 
@@ -576,8 +576,9 @@ resultMessage.innerHTML = `
                     }
                     
                     resultMessage.className = 'result-message result-error';
-                    resultMessage.innerHTML = `❌ ${errorText}`;
-                }
+resultMessage.innerHTML = `
+    ❌ ${result.message || 'Attendance failed'}
+`;
             } catch (error) {
                 // Save offline if network error
                 saveOfflineData(data);
