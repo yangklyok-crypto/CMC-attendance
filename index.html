@@ -689,14 +689,32 @@ const rawData = Object.fromEntries(formData);
             const now = new Date();
             const thailandTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}));
             
-            const data = {
-                employeeId: rawData.employee_id || '',
+            // Convert the selfie taken by the camera into Base64
+const selfieBase64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = function () {
+        // Remove "data:image/jpeg;base64," and keep only Base64
+        const base64 = String(reader.result).split(',')[1];
+        resolve(base64);
+    };
+
+    reader.onerror = reject;
+    reader.readAsDataURL(selfieBlob);
+});
+
+const data = {
+    employeeId: rawData.employee_id || '',
     action: rawData.action || '',
     latitude: parseFloat(rawData.latitude) || 0,
     longitude: parseFloat(rawData.longitude) || 0,
     accuracy: locationAccuracy || 0,
     submissionId: crypto.randomUUID(),
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+
+    // Selfie
+    selfieBase64: selfieBase64,
+    selfieMimeType: 'image/jpeg'
 };
             
             console.log('Sending data:', data);
