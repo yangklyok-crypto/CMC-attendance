@@ -539,13 +539,27 @@
                 
                 if (response.ok) {
                     // Success - assume it worked if we got a 200 response
-                    resultMessage.className = 'result-message result-success';
-                    resultMessage.innerHTML = `
-                        ✅ ${data.action === 'in' ? 'Check-in' : 'Check-out'} successful!<br>
-                        <small>Employee: ${data.employee_id}<br>
-                        Time: ${data.thailand_time}<br>
-                        Location: ${data.location}</small>
-                    `;
+                   resultMessage.className = 'result-message result-success';
+
+const lagosTime = new Date().toLocaleString('en-GB', {
+    timeZone: 'Africa/Lagos',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+});
+
+resultMessage.innerHTML = `
+    ✅ ${data.action === 'in' ? 'Check-in' : 'Check-out'} successful!<br>
+    <small>
+    Employee ID: ${data.employeeId}<br>
+    Time: ${lagosTime}<br>
+    GPS: ${data.latitude}, ${data.longitude}<br>
+    Accuracy: ±${Math.round(data.accuracy)}m
+    </small>
+`;
                     form.reset();
                     locationObtained = false;
                     setTimeout(() => {
