@@ -347,6 +347,7 @@
         const lngInput = document.getElementById('longitude');
         
         let locationObtained = false;
+        let locationAccuracy = 0;
         
         // ⚠️ IMPORTANT: Replace with your actual n8n webhook URL
         const WEBHOOK_URL = 'https://yangklyok.app.n8n.cloud/webhook/cmc-attendance';
@@ -399,6 +400,7 @@
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
                         const accuracy = position.coords.accuracy;
+                        locationAccuracy = accuracy;
                         
                         latInput.value = lat;
                         lngInput.value = lng;
@@ -461,6 +463,7 @@
                     const lat = position.coords.latitude;
                     const lng = position.coords.longitude;
                     const accuracy = position.coords.accuracy;
+                    locationAccuracy = accuracy;
                     
                     latInput.value = lat;
                     lngInput.value = lng;
@@ -500,22 +503,14 @@
             const thailandTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}));
             
             const data = {
-                employee_id: rawData.employee_id || '',
-                action: rawData.action || '',
-                latitude: parseFloat(rawData.latitude) || 0,
-                longitude: parseFloat(rawData.longitude) || 0,
-                timestamp: thailandTime.toISOString(),
-                thailand_time: thailandTime.toLocaleString("en-US", {
-                    timeZone: "Asia/Bangkok",
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
-                }),
-                location: `${parseFloat(rawData.latitude) || 0}, ${parseFloat(rawData.longitude) || 0}`
-            };
+                employeeId: rawData.employee_id || '',
+    action: rawData.action || '',
+    latitude: parseFloat(rawData.latitude) || 0,
+    longitude: parseFloat(rawData.longitude) || 0,
+    accuracy: locationAccuracy || 0,
+    submissionId: crypto.randomUUID(),
+    timestamp: new Date().toISOString()
+};
             
             console.log('Sending data:', data);
             
