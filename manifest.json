@@ -1,15 +1,13 @@
 {
-  "name": "Employee Check-in System",
-  "short_name": "Check-in",
-  "description": "Location-based employee check-in and check-out system",
+  "name": "CMC Attendance",
+  "short_name": "CMC Attendance",
+  "description": "Champion Machinery Employee Attendance System",
   "start_url": "./",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#9966cc",
-  "orientation": "portrait-primary",
-  "categories": ["productivity", "business"],
-  "lang": "en",
   "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f15a29",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "icon-192.png",
@@ -21,35 +19,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "shortcuts": [
-    {
-      "name": "Quick Check In",
-      "short_name": "Check In",
-      "description": "Quick check-in at current location",
-      "url": "./?action=in",
-      "icons": [
-        {
-          "src": "icon-96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Quick Check Out",
-      "short_name": "Check Out",
-      "description": "Quick check-out at current location",
-      "url": "./?action=out",
-      "icons": [
-        {
-          "src": "icon-96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false
+  ]
 }
