@@ -284,29 +284,7 @@
     </div>
 
     <script>
-        const EMPLOYEE_LIST_URL = 'https://yangklyok.app.n8n.cloud/webhook/cmc-employees';
-
-async function loadEmployees() {
-    try {
-        const response = await fetch(EMPLOYEE_LIST_URL);
-        const employees = await response.json();
-
-        const select = document.getElementById('employee_id');
-        select.innerHTML = '<option value="">请选择员工</option>';
-
-        employees.forEach(emp => {
-            const option = document.createElement('option');
-            option.value = emp.employeeId;
-            option.textContent = `${emp.employeeName} (${emp.employeeId})`;
-            select.appendChild(option);
-        });
-
-    } catch (error) {
-        console.error('Failed to load employees:', error);
-    }
-}
-
-loadEmployees();
+       
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
