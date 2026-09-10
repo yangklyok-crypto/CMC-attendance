@@ -420,7 +420,6 @@ loadEmployees();
         }
         
         // Sync when back online
-        window.addEventListener('online', syncOfflineData);
         
         function getCurrentLocation() {
             console.log('Requesting location...');
@@ -553,13 +552,12 @@ loadEmployees();
             
             try {
                 if (!navigator.onLine) {
-                    // Save offline
-                    saveOfflineData(data);
-                    resultMessage.className = 'result-message result-success';
-                    resultMessage.innerHTML = '💾 Saved offline - will sync when online';
-                    form.reset();
-                    return;
-                }
+    resultMessage.className = 'result-message result-error';
+    resultMessage.innerHTML = '❌ No network. Attendance was NOT recorded.';
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'Submit Check-in/out';
+    return;
+}
                 
                 const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
