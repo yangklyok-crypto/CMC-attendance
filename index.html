@@ -434,6 +434,664 @@ body {
         font-size: 27px;
     }
 }
+        /* =========================================================
+   CHAMPION MACHINERY - FINAL ATTENDANCE UI
+   ========================================================= */
+
+:root {
+    --champion-orange: #f15a29;
+    --champion-orange-light: #ff7a32;
+    --champion-black: #101828;
+    --champion-grey: #667085;
+    --page-bg: #f4f6f8;
+    --border: #e4e7ec;
+}
+
+/* ---------- PAGE ---------- */
+
+html {
+    background: var(--page-bg);
+}
+
+body {
+    margin: 0;
+    padding: 18px 12px 40px;
+    min-height: 100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(241, 90, 41, 0.07) 0%,
+            transparent 18%
+        ),
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f4f6f8 55%,
+            #eef1f4 100%
+        );
+
+    color: var(--champion-black);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    overflow-x: hidden;
+}
+
+
+/* ---------- MAIN CARD ---------- */
+
+.container {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+
+    margin: 0 auto;
+    padding: 28px 24px 32px;
+
+    background: rgba(255,255,255,0.97);
+
+    border: 1px solid rgba(228,231,236,0.9);
+    border-radius: 26px;
+
+    box-shadow:
+        0 24px 60px rgba(16,24,40,0.10),
+        0 4px 12px rgba(16,24,40,0.04);
+
+    overflow: hidden;
+}
+
+
+/* Orange brand line */
+
+.container::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f15a29,
+            #ff7a32,
+            #f15a29
+        );
+
+    z-index: 5;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.header {
+    position: relative;
+
+    text-align: center;
+
+    padding: 14px 0 24px;
+
+    margin-bottom: 22px;
+
+    min-height: 180px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   EXCAVATOR - BUILT DIRECTLY INTO CSS
+   ========================================================= */
+
+.header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 115px;
+
+    right: -28px;
+    top: 25px;
+
+    background-image:
+        url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTgwIj4KPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGYxNzJhIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC4xOCI+CiAgPHBhdGggZD0iTTg1IDEyNmgxMjUiLz4KICA8cGF0aCBkPSJNMTA4IDEyNmwxOC01OGg3MGwyNCA1OCIvPgogIDxwYXRoIGQ9Ik0xMzcgNjhsMTEtMjZoNDJsMTggMjYiLz4KICA8cGF0aCBkPSJNMTg4IDQzbDU1IDE5IDQ0IDM2Ii8+CiAgPHBhdGggZD0iTTI4NiA5N2wyNCAxNC0xNiAzMS0zMC0xMCIvPgogIDxwYXRoIGQ9Ik0yNDIgNjNsMTggOCAzMiAyNyIvPgogIDxwYXRoIGQ9Ik03NiAxMjZjLTIyIDAtNDAgMTItNDAgMjdzMTggMjcgNDAgMjdoMTI2YzIyIDAgNDAtMTIgNDAtMjdzLTE4LTI3LTQwLTI3eiIvPgogIDxwYXRoIGQ9Ik02MSAxNTNoMTU2Ii8+CjwvZz4KPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjE1YTI5IiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC4yOCI+CiAgPHBhdGggZD0iTTE4OCA0M2w1NSAxOSA0NCAzNiIvPgogIDxwYXRoIGQ9Ik0yODYgOTdsMjQgMTQtMTYgMzEtMzAtMTAiLz4KPC9nPgo8L3N2Zz4=");
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    opacity: 0.75;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   ENGINEERING / DUMP TRUCK
+   ========================================================= */
+
+.header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 165px;
+    height: 85px;
+
+    left: -35px;
+    bottom: 0;
+
+    background-image:
+        url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTgwIj4KPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGYxNzJhIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC4xNCI+CiAgPHBhdGggZD0iTTM4IDExMmgxODZWNTRINzBMMzggODZ6Ii8+CiAgPHBhdGggZD0iTTIyNCAxMTJoNTZsMjggMjZ2MTVoLTg0eiIvPgogIDxwYXRoIGQ9Ik0yNDYgMTEyVjgyaDM0bDI4IDMwIi8+CiAgPHBhdGggZD0iTTc4IDU0bDM2IDU4Ii8+CiAgPGNpcmNsZSBjeD0iODgiIGN5PSIxNTAiIHI9IjIyIi8+CiAgPGNpcmNsZSBjeD0iMjQ1IiBjeT0iMTUwIiByPSIyMiIvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjE1MCIgcj0iMjIiLz4KPC9nPgo8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmMTVhMjkiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIwLjI1Ij4KICA8cGF0aCBkPSJNMzggODZoMTg2Ii8+CiAgPHBhdGggZD0iTTI0NiAxMTJWODJoMzRsMjggMzAiLz4KPC9nPgo8L3N2Zz4=");
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    opacity: 0.65;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* Make header contents sit above machinery */
+
+.header > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ---------- COMPANY LOGO ---------- */
+
+.logo {
+    display: block;
+
+    width: 100%;
+    max-width: 330px;
+    height: auto;
+
+    margin: 0 auto 22px;
+
+    object-fit: contain;
+
+    border-radius: 0;
+}
+
+
+/* ---------- TITLE ---------- */
+
+.header h1 {
+    margin: 0 0 8px;
+
+    color: #101828;
+
+    font-size: 31px;
+    font-weight: 800;
+    line-height: 1.15;
+
+    letter-spacing: -0.8px;
+}
+
+
+/* Subtitle */
+
+.header p {
+    margin: 0 auto;
+
+    max-width: 390px;
+
+    color: #667085;
+
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+
+/* ---------- FORM ---------- */
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+
+/* Labels */
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #101828;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* ---------- INPUTS / SELECT ---------- */
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    padding: 16px 17px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    color: #101828;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #98a2b3;
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #f15a29;
+
+    box-shadow:
+        0 0 0 4px rgba(241,90,41,0.11);
+}
+
+
+/* ---------- SELFIE SECTION ---------- */
+
+#cameraBox {
+    position: relative;
+
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fafafa,
+            #f3f5f7
+        );
+
+    border: 1.5px dashed #c9ced6;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+
+#camera {
+    display: block;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    border-radius: 14px !important;
+
+    background: #e9edf2 !important;
+
+    box-shadow:
+        0 4px 14px rgba(16,24,40,0.08);
+}
+
+
+#photoPreview {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    border-radius: 14px !important;
+
+    box-shadow:
+        0 4px 14px rgba(16,24,40,0.08);
+}
+
+
+#photoStatus {
+    margin-top: 12px !important;
+    margin-bottom: 4px !important;
+
+    color: #667085;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* ---------- PHOTO BUTTON ---------- */
+
+#takePhotoBtn,
+#retakePhotoBtn {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 14px 16px;
+
+    border: 0;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #101828,
+            #344054
+        );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(16,24,40,0.14);
+
+    transition: 0.2s ease;
+}
+
+
+#takePhotoBtn:hover,
+#retakePhotoBtn:hover {
+    transform: translateY(-1px);
+
+    background: #101828;
+}
+
+
+/* ---------- LOCATION ---------- */
+
+.location-status {
+    margin: 20px 0 24px;
+
+    padding: 15px 16px;
+
+    border-radius: 14px;
+
+    text-align: left;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+
+.location-pending {
+    color: #475467;
+
+    background: #f8fafc;
+
+    border: 1px solid #e4e7ec;
+}
+
+
+.location-success {
+    color: #067647;
+
+    background: #ecfdf3;
+
+    border: 1px solid #abefc6;
+}
+
+
+.location-error {
+    color: #b42318;
+
+    background: #fef3f2;
+
+    border: 1px solid #fecdca;
+}
+
+
+/* ---------- MAIN SUBMIT BUTTON ---------- */
+
+.submit-btn,
+#submitBtn {
+    width: 100%;
+
+    padding: 17px 18px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ef5424 0%,
+            #ff6b2c 55%,
+            #ff7c34 100%
+        );
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    letter-spacing: 0;
+
+    text-transform: none;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 24px rgba(241,90,41,0.24);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.submit-btn:hover,
+#submitBtn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 30px rgba(241,90,41,0.30);
+}
+
+
+.submit-btn:disabled,
+#submitBtn:disabled {
+    background: #d0d5dd;
+
+    color: #ffffff;
+
+    box-shadow: none;
+
+    transform: none;
+
+    cursor: not-allowed;
+}
+
+
+/* ---------- RESULT MESSAGE ---------- */
+
+.result-message {
+    margin-top: 18px;
+
+    padding: 15px 16px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+
+.result-success {
+    background: #ecfdf3;
+
+    color: #067647;
+
+    border: 1px solid #abefc6;
+}
+
+
+.result-error {
+    background: #fef3f2;
+
+    color: #b42318;
+
+    border: 1px solid #fecdca;
+}
+
+
+/* ---------- INSTALL PWA BOX ---------- */
+
+.install-prompt {
+    margin-bottom: 24px;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    color: #9a3412;
+}
+
+
+.install-btn {
+    margin-top: 10px;
+
+    padding: 10px 16px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #101828;
+
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/* ---------- OFFLINE NOTICE ---------- */
+
+.offline-indicator {
+    border-radius: 12px;
+
+    background: #fef3f2 !important;
+
+    color: #b42318 !important;
+
+    border: 1px solid #fecdca;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px 9px 30px;
+    }
+
+    .container {
+        padding: 22px 17px 28px;
+
+        border-radius: 21px;
+    }
+
+    .header {
+        min-height: 165px;
+
+        padding-top: 12px;
+
+        margin-bottom: 18px;
+    }
+
+    .logo {
+        max-width: 300px;
+
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+
+    /* excavator */
+
+    .header::before {
+        width: 165px;
+        height: 90px;
+
+        right: -35px;
+        top: 37px;
+
+        opacity: 0.58;
+    }
+
+    /* truck */
+
+    .header::after {
+        width: 120px;
+        height: 65px;
+
+        left: -32px;
+        bottom: -2px;
+
+        opacity: 0.5;
+    }
+
+    .form-group {
+        margin-bottom: 21px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 15px;
+    }
+}
         
     </style>
 </head>
