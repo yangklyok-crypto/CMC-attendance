@@ -612,7 +612,9 @@ resultMessage.innerHTML = `
 resultMessage.innerHTML = `
     ❌ ${result.message || 'Attendance failed'}
 `;
-            } catch (error) {
+}
+
+} catch (error) {
                 // Save offline if network error
                 saveOfflineData(data);
                 resultMessage.className = 'result-message result-success';
