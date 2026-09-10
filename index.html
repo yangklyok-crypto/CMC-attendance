@@ -776,23 +776,18 @@ loadEmployees();
        form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    if (!selfieTaken || !selfieBlob) {
-        alert('You must take a selfie before check-in/out.');
-        return;
-    }
+  if (!selfieTaken || !selfieBlob) {
+    alert('You must take a selfie before check-in/out.');
+    return;
+}
 
-    if (!locationObtained) {
-        alert('You must take a selfie before check-in/out.');
-        return;
-    }
-
-  if (!locationObtained) {
+if (!locationObtained) {
     alert('Location is required before check-in/out.');
     return;
 }
-            
-            const formData = new FormData(form);
-            const rawData = Object.fromEntries(formData);
+
+const formData = new FormData(form);
+const rawData = Object.fromEntries(formData);
             
             // Create clean data object with Thailand time
             const now = new Date();
