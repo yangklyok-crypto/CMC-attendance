@@ -268,7 +268,58 @@
                     <option value="out">🔴 Check Out</option>
                 </select>
             </div>
-            
+            <div class="form-group">
+    <label>Selfie Photo</label>
+
+    <div id="cameraBox" style="text-align:center;">
+        <video
+            id="camera"
+            autoplay
+            playsinline
+            muted
+            style="
+                width:100%;
+                max-width:350px;
+                border-radius:12px;
+                background:#000;
+                transform:scaleX(-1);
+            ">
+        </video>
+
+        <canvas id="photoCanvas" style="display:none;"></canvas>
+
+        <img
+            id="photoPreview"
+            style="
+                display:none;
+                width:100%;
+                max-width:350px;
+                border-radius:12px;
+                margin-top:10px;
+            "
+        >
+
+        <button
+            type="button"
+            id="takePhotoBtn"
+            class="submit-btn"
+            style="margin-top:12px;">
+            📷 Take Selfie
+        </button>
+
+        <button
+            type="button"
+            id="retakePhotoBtn"
+            class="submit-btn"
+            style="display:none;margin-top:10px;">
+            🔄 Retake Photo
+        </button>
+
+        <p id="photoStatus" style="margin-top:10px;">
+            ❌ Selfie required before attendance
+        </p>
+    </div>
+</div>
             <div id="locationStatus" class="location-status location-pending">
                 <span class="loading"></span>Getting your location...
             </div>
@@ -351,6 +402,110 @@
         
         let locationObtained = false;
         let locationAccuracy = 0;
+        let selfieTaken = false;
+let selfieBlob = null;
+let cameraStream = null;
+
+const camera = document.getElementById('camera');
+const photoCanvas = document.getElementById('photoCanvas');
+const photoPreview = document.getElementById('photoPreview');
+const takePhotoBtn = document.getElementById('takePhotoBtn');
+const retakePhotoBtn = document.getElementById('retakePhotoBtn');
+const photoStatus = document.getElementById('photoStatus');
+
+async function startCamera() {
+    try {
+        if (cameraStream) {
+            cameraStream.getTracks().forEach(track => track.stop());
+        }
+
+        cameraStream = await navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: { ideal: 'user' },
+                width: { ideal: 720 },
+                height: { ideal: 960 }
+            },
+            audio: false
+        });
+
+        camera.srcObject = cameraStream;
+
+        photoStatus.innerHTML = '📷 Take a selfie to continue';
+
+    } catch (error) {
+        console.error('Camera error:', error);
+
+        photoStatus.innerHTML =
+            '❌ Camera permission required. Please allow camera access.';
+    }
+}
+
+takePhotoBtn.addEventListener('click', function () {
+
+    if (!camera.videoWidth || !camera.videoHeight) {
+        alert('Camera is not ready yet.');
+        return;
+    }
+
+    photoCanvas.width = camera.videoWidth;
+    photoCanvas.height = camera.videoHeight;
+
+    const ctx = photoCanvas.getContext('2d');
+
+    // Mirror selfie so saved photo matches preview
+    ctx.translate(photoCanvas.width, 0);
+    ctx.scale(-1, 1);
+
+    ctx.drawImage(
+        camera,
+        0,
+        0,
+        photoCanvas.width,
+        photoCanvas.height
+    );
+
+    photoCanvas.toBlob(function(blob) {
+
+        selfieBlob = blob;
+        selfieTaken = true;
+
+        const photoURL = URL.createObjectURL(blob);
+
+        photoPreview.src = photoURL;
+        photoPreview.style.display = 'block';
+
+        camera.style.display = 'none';
+        takePhotoBtn.style.display = 'none';
+        retakePhotoBtn.style.display = 'block';
+
+        photoStatus.innerHTML = '✅ Selfie captured';
+
+        if (cameraStream) {
+            cameraStream.getTracks().forEach(track => track.stop());
+            cameraStream = null;
+        }
+
+    }, 'image/jpeg', 0.75);
+
+});
+
+retakePhotoBtn.addEventListener('click', async function () {
+
+    selfieTaken = false;
+    selfieBlob = null;
+
+    photoPreview.style.display = 'none';
+    camera.style.display = 'block';
+
+    takePhotoBtn.style.display = 'block';
+    retakePhotoBtn.style.display = 'none';
+
+    photoStatus.innerHTML = '📷 Take a new selfie';
+
+    await startCamera();
+});
+
+startCamera();
         
         // ⚠️ IMPORTANT: Replace with your actual n8n webhook URL
         const WEBHOOK_URL = 'https://yangklyok.app.n8n.cloud/webhook/cmc-attendance';
@@ -521,12 +676,15 @@ loadEmployees();
         }
         
         form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            if (!locationObtained) {
-                alert('Please wait for location to be obtained before submitting.');
-                return;
-            }
+
+    e.preventDefault();
+
+    if (!selfieTaken || !selfieBlob) {
+        alert('You must take a selfie before check-in/out.');
+        return;
+    }
+
+    if (!locationObtained) {
             
             const formData = new FormData(form);
             const rawData = Object.fromEntries(formData);
