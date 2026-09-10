@@ -27,7 +27,7 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #000000;
+            background: #f5f7fb;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -36,7 +36,7 @@
         }
         
         .container {
-            background: #1a1a1a;
+            background: #ffffff;
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -49,23 +49,28 @@
             margin-bottom: 30px;
         }
         
-        .logo {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-        }
+       .logo {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    margin: 0 auto 20px;
+    border-radius: 0;
+    object-fit: contain;
+}
         
         .header h1 {
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
+    color: #111827;
+    margin-bottom: 8px;
+    font-size: 30px;
+    font-weight: 800;
+}
         
-        .header p {
-            color: #cccccc;
-            font-size: 16px;
-        }
+        .header h1 {
+    color: #111827;
+    margin-bottom: 8px;
+    font-size: 30px;
+    font-weight: 800;
+}
         
         .install-prompt {
             background: #e3f2fd;
@@ -91,32 +96,32 @@
             margin-bottom: 25px;
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 14px;
-        }
+       .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #111827;
+    font-weight: 700;
+    font-size: 16px;
+}
         
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #444444;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: #2a2a2a;
-            color: #ffffff;
-        }
+       .form-group input,
+.form-group select {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 14px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    color: #111827;
+}
         
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #9966cc;
-            box-shadow: 0 0 0 3px rgba(153, 102, 204, 0.3);
-        }
+       .form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #f15a29;
+    box-shadow: 0 0 0 3px rgba(241, 90, 41, 0.15);
+}
         
         .location-status {
             padding: 15px;
@@ -144,25 +149,23 @@
             border: 2px solid #f5c6cb;
         }
         
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #9966cc 0%, #cc6699 100%);
-            color: white;
-            padding: 18px;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+      .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #f15a29 0%, #ff7a32 100%);
+    color: white;
+    padding: 18px;
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
         
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(153, 102, 204, 0.4);
-        }
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(241, 90, 41, 0.25);
+}
         
         .submit-btn:disabled {
             background: #ccc;
@@ -233,6 +236,205 @@
                 font-size: 24px;
             }
         }
+/* ===== Champion Machinery UI Polish ===== */
+
+/* Main card */
+.container {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 32px 24px;
+    box-shadow: 0 12px 35px rgba(17, 24, 39, 0.10);
+    width: 100%;
+    max-width: 520px;
+    border: 1px solid #eeeeee;
+}
+
+/* More natural mobile layout */
+body {
+    align-items: flex-start;
+    padding: 20px 14px 40px;
+}
+
+/* Header */
+.header {
+    margin-bottom: 28px;
+}
+
+.logo {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    margin: 4px auto 24px;
+    object-fit: contain;
+}
+
+.header h1 {
+    color: #111827;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #6b7280;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Form spacing */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    color: #111827;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Dropdowns */
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 16px 18px;
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #d1d5db;
+    border-radius: 14px;
+    font-size: 16px;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: #f15a29;
+    box-shadow: 0 0 0 3px rgba(241, 90, 41, 0.12);
+}
+
+/* Selfie area */
+#cameraBox {
+    background: #f9fafb;
+    border: 1px dashed #cbd5e1;
+    border-radius: 18px;
+    padding: 14px;
+}
+
+#camera {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 14px !important;
+    background: #eef1f5 !important;
+}
+
+#photoPreview {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 14px !important;
+}
+
+#photoStatus {
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 12px !important;
+}
+
+/* Selfie buttons */
+#takePhotoBtn,
+#retakePhotoBtn {
+    background: #111827;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+#takePhotoBtn:hover,
+#retakePhotoBtn:hover {
+    background: #000000;
+    box-shadow: none;
+}
+
+/* Location box */
+.location-status {
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.location-pending {
+    background: #f8fafc;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.location-success {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.location-error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+/* Main submit button */
+#submitBtn {
+    background: linear-gradient(135deg, #f15a29 0%, #ff7a32 100%);
+    color: #ffffff;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: none;
+    letter-spacing: 0;
+    box-shadow: 0 8px 20px rgba(241, 90, 41, 0.22);
+}
+
+#submitBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(241, 90, 41, 0.28);
+}
+
+#submitBtn:disabled {
+    background: #d1d5db;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+/* Result messages */
+.result-message {
+    border-radius: 14px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    body {
+        padding: 12px 10px 32px;
+    }
+
+    .container {
+        padding: 26px 18px;
+        border-radius: 20px;
+    }
+
+    .logo {
+        max-width: 310px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+}
+        
     </style>
 </head>
 <body>
@@ -242,8 +444,8 @@
 
     <div class="container">
         <div class="header">
-            <img src="logo.png" alt="Dead Simple Productivity Logo" class="logo">
-            <h1>📍 Employee Check-in</h1>
+            <img src="champion-logo.png.png" alt="Champion Machinery" class="logo">
+            <h1>Employee Check-in</h1>
             <p>Please allow location access to check in/out</p>
         </div>
         
